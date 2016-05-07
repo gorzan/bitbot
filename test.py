@@ -9,9 +9,9 @@ app = Flask(__name__)
 def home():
     uri = 'https://api.bitcoinaverage.com/ticker/USD/'
     try:
-    	uResponse = requests.get(uri)
-	except requests.ConnectionError:
-		return "Connection Error"
+        uResponse = requests.get(uri)
+    except requests.ConnectionError:
+       return "Connection Error"
 	Jresponse = uResponse.text
 	data = json.loads(Jresponse)
 
