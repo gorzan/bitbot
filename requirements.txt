@@ -1,4 +1,1 @@
 Flask==0.9
-requests
-simplejson
-json
