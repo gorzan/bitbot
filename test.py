@@ -17,9 +17,13 @@ def home():
 
     last = data['last']
 
-    result = 'Siste transaksjonskurs Bitcoin: $' + str(last)
+    response = {}
+    response['text'] = 'Siste transaksjonskurs Bitcoin: $' + str(last)
+    response['response_type'] = 'in_channel'
 
-    return result
+    json_response = json.dumps(response)
+
+    return json_response
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
