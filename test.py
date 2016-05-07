@@ -12,9 +12,8 @@ def home():
         uResponse = requests.get(uri)
     except requests.ConnectionError:
        return "Connection Error"
-	Jresponse = uResponse.text
-	data = json.loads(Jresponse)
-
+    Jresponse = uResponse.text
+    data = json.loads(Jresponse)
     return data
 
 if __name__ == '__main__':
