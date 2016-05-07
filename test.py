@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, Response
 import requests
 import simplejson
 import json
@@ -17,13 +17,15 @@ def home():
 
     last = data['last']
 
-    response = {}
-    response['text'] = 'Siste transaksjonskurs Bitcoin: $' + str(last)
-    response['response_type'] = 'in_channel'
+    output = {}
+    output['text'] = 'Siste transaksjonskurs Bitcoin: $' + str(last)
+    output['response_type'] = 'in_channel'
 
-    json_response = json.dumps(response)
+    json_response = json.dumps(output)
 
-    return json_response
+    resp = Response(response=json_response, status=200, mimetype="application/json")
+    
+    return resp
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
