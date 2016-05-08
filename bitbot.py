@@ -38,7 +38,7 @@ def price():
 	if ticker == 'btc':
 		output['text'] = 'Siste transaksjonskurs for Bitcoin: $' + str(round(data['last'],2))
 	elif ticker == 'eth':
-		output['text'] = 'Siste transaksjonskurs for Etherium: $' + str(round(data['price']['usd'],2))
+		output['text'] = 'Siste transaksjonskurs for Ethereum: $' + str(round(data['price']['usd'],2))
 	else:
 		return "Ukjent ticker '" + ticker.upper() +"'"
 
