@@ -12,11 +12,15 @@ def price():
 	api_uri['btc'] = 'https://api.bitcoinaverage.com/ticker/USD/'
 	api_uri['eth'] = 'https://coinmarketcap-nexuist.rhcloud.com/api/eth'
 
-	ticker = request.args.get('ticker').lower()
+	#check if ticker is defined
+	if 'text' not in request.args:
+		return "Ingen ticker definert. Bruk '/price [ticker]'."
+
+	ticker = request.args.get('text').lower()
 
 	#check if valid ticker
 	if ticker not in api_uri.keys():
-		return "Ukjent ticker"
+		return "Ukjent ticker '" + ticker.upper() +"'"
 	
 	#get appropriate json object for ticker and put it in data
 	try:
@@ -36,7 +40,7 @@ def price():
 	elif ticker == 'eth':
 		output['text'] = 'Siste transaksjonskurs for Etherium: $' + str(round(data['price']['usd'],2))
 	else:
-		return "Ukjent ticker"
+		return "Ukjent ticker '" + ticker.upper() +"'"
 
 	json_response = json.dumps(output)
 
